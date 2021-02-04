@@ -83,6 +83,31 @@ shangguanyan = [{'name':'庞统', 'nation':2, 'level':16}
         ,{'name':'秦香', 'nation':4, 'level':18}
         ]
 
+simayi = [{'name':'郭嘉', 'nation':1, 'level':16}
+        ,{'name':'张辽', 'nation':1, 'level':18}
+        ,{'name':'吕蒙', 'nation':3, 'level':16}
+        ,{'name':'夏侯惇', 'nation':1, 'level':16}
+        ,{'name':'贾诩', 'nation':4, 'level':16}
+        ,{'name':'华佗', 'nation':4, 'level':16}
+        ,{'name':'典韦', 'nation':1, 'level':16}
+        ,{'name':'荀彧', 'nation':1, 'level':16}
+        ,{'name':'甄姬', 'nation':1, 'level':15}
+        ,{'name':'张春华', 'nation':1, 'level':15}
+        ]
+
+zhangliao = [{'name':'郭嘉', 'nation':1, 'level':16}
+        ,{'name':'司马懿', 'nation':1, 'level':18}
+        ,{'name':'关羽', 'nation':2, 'level':16}
+        ,{'name':'夏侯惇', 'nation':1, 'level':16}
+        ,{'name':'许褚', 'nation':1, 'level':16}
+        ,{'name':'马超', 'nation':2, 'level':16}
+        ,{'name':'典韦', 'nation':1, 'level':16}
+        ,{'name':'甘宁', 'nation':3, 'level':16}
+        ,{'name':'曹仁', 'nation':1, 'level':15}
+        ,{'name':'张郃', 'nation':1, 'level':15}
+        ,{'name':'夏侯渊', 'nation':1, 'level':15}
+        ]
+
 def nation_create(mans, man15s, man16s, man18s):
     for info in mans:
         level = info['level']
@@ -141,27 +166,33 @@ def check_append(list, info):
 
 #利用set自动去重
 results = []
-for info in sunce:
-    info['to'] = 8
-    results.append(info)
-for info in zhouyu:
-    info['to'] = 8
-    results.append(info)
+# for info in sunce:
+#     info['to'] = 8
+#     results.append(info)
+# for info in zhouyu:
+#     info['to'] = 8
+#     results.append(info)
 for info in zhaoyun:
     info['to'] = 8
     results.append(info)
-for info in zhugeliang:
-    info['to'] = 7
-    results.append(info)
-for info in zuoci:
+# for info in zhugeliang:
+#     info['to'] = 7
+#     results.append(info)
+for info in simayi:
     info['to'] = 6
     results.append(info)
-for info in lvbu:
+for info in zhangliao:
     info['to'] = 6
     results.append(info)
-for info in shangguanyan:
-    info['to'] = 6
-    results.append(info)
+# for info in zuoci:
+#     info['to'] = 6
+#     results.append(info)
+# for info in lvbu:
+#     info['to'] = 6
+#     results.append(info)
+# for info in shangguanyan:
+#     info['to'] = 6
+#     results.append(info)
 
 wei = []
 shu = []
