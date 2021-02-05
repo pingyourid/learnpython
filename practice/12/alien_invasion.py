@@ -9,6 +9,7 @@ from bullet import Bullet
 from alien import Alien
 from game_status import GameStatus
 from button import Button
+from scoreboard import ScoreBoard
 
 class AlienInvasion:
     def __init__(self):
@@ -35,6 +36,9 @@ class AlienInvasion:
 
         '''play按钮'''
         self.play_button = Button(self, 'Play')
+
+        '''分数按钮'''
+        self.sb = ScoreBoard(self)
 
     def run_game(self):    
         self._auto_fire()   
@@ -85,6 +89,11 @@ class AlienInvasion:
 
     def _check_bullet_alien_collide(self):
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+
+        '''增加得分'''
+        if collisions:
+            self.status.score += self.my_setting.per_alien_score
+            self.sb.prep_score()
 
         if not self.aliens:
             self.bullets.empty()
@@ -169,6 +178,7 @@ class AlienInvasion:
     def _start_game(self):
          if not self.status.game_active:
             self.status.reset()
+            self.sb.prep_score()
             self.status.game_active = True
             self._reset_scene_status()  
             self.my_setting._init_dynamic_setting()
@@ -198,6 +208,7 @@ class AlienInvasion:
         if not self.status.game_active:
             self.play_button.draw_button()
 
+        self.sb.draw_score()
         pygame.display.flip()
 
     def _fire_bullet(self):

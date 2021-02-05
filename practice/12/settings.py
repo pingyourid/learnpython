@@ -28,6 +28,8 @@ class Settings:
         self.bullet_speed = 1.0
         '''外星人'''
         self.alien_speed_x = 0.3
+        '''外星人得分'''
+        self.per_alien_score = 50
 
     def _increase_speed(self):
         self.speed *= self.speed_scale
