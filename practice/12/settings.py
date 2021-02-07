@@ -9,7 +9,7 @@ class Settings:
         self.ship_counts = 3
 
         '''子弹'''        
-        self.bullet_width = 300
+        self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
 
@@ -18,6 +18,8 @@ class Settings:
         self.alien_direction = 1
 
         self.speed_scale = 1.1
+
+        self.score_scale = 1.5
 
         self._init_dynamic_setting()
 
@@ -35,3 +37,4 @@ class Settings:
         self.speed *= self.speed_scale
         self.bullet_speed *= self.speed_scale
         self.alien_speed_x *= self.speed_scale
+        self.per_alien_score = int(self.per_alien_score * self.score_scale)

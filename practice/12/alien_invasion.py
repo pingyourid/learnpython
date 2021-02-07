@@ -92,12 +92,17 @@ class AlienInvasion:
 
         '''增加得分'''
         if collisions:
-            self.status.score += self.my_setting.per_alien_score
+            for aliens in collisions.values():
+                for alien in aliens:
+                    self.status.score += self.my_setting.per_alien_score
             self.sb.prep_score()
+            self.sb.check_high_score()
 
         if not self.aliens:
             self.bullets.empty()
             self.my_setting._increase_speed()
+            self.status.level += 1
+            self.sb.prep_level()
             self._build_aliens()
 
     def _update_aliens(self):
@@ -112,6 +117,7 @@ class AlienInvasion:
     def _ship_hit(self):
         self._reset_scene_status()
         self.status.minus_ship()
+        self.sb.prep_ships()
         sleep(1)
 
     def _check_alien_bottom(self):
@@ -138,7 +144,7 @@ class AlienInvasion:
     def _check_event(self):
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    self.timer.cancel()
+                    self.status.save_high_score()
                     sys.exit()
                 elif event.type == pygame.KEYDOWN:
                     self._check_key_down(event)
@@ -154,6 +160,7 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.left_moving = True
         elif event.key == pygame.K_q:
+            self.status.save_high_score()
             sys.exit()
         elif event.key == pygame.K_SPACE:
             # self._fire_bullet()
@@ -179,6 +186,9 @@ class AlienInvasion:
          if not self.status.game_active:
             self.status.reset()
             self.sb.prep_score()
+            self.sb.prep_high_score()
+            self.sb.prep_level()
+            self.sb.prep_ships()
             self.status.game_active = True
             self._reset_scene_status()  
             self.my_setting._init_dynamic_setting()
@@ -212,8 +222,9 @@ class AlienInvasion:
         pygame.display.flip()
 
     def _fire_bullet(self):
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if self.status.game_active:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
 
 if __name__ == '__main__':
     ai = AlienInvasion()
