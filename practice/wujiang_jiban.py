@@ -148,7 +148,7 @@ def check_append(list, info):
         for old_info in list[:]:
             if old_info['name'] == name:
                 if old_info['to'] < info['to']:
-                    print(f'old_info:{old_info}, info:{info}')
+                    # print(f'old_info:{old_info}, info:{info}')
                     '''需要删除'''
                     delete_info = old_info    
                     '''仅适用原本无重复'''            
@@ -172,17 +172,17 @@ results = []
 # for info in zhouyu:
 #     info['to'] = 8
 #     results.append(info)
-for info in zhaoyun:
+# for info in zhaoyun:
+#     info['to'] = 8
+#     results.append(info)
+for info in zhugeliang:
+    info['to'] = 7
+    results.append(info)
+for info in simayi:
     info['to'] = 8
     results.append(info)
-# for info in zhugeliang:
-#     info['to'] = 7
-#     results.append(info)
-for info in simayi:
-    info['to'] = 6
-    results.append(info)
 for info in zhangliao:
-    info['to'] = 6
+    info['to'] = 8
     results.append(info)
 # for info in zuoci:
 #     info['to'] = 6
@@ -190,9 +190,9 @@ for info in zhangliao:
 # for info in lvbu:
 #     info['to'] = 6
 #     results.append(info)
-# for info in shangguanyan:
-#     info['to'] = 6
-#     results.append(info)
+for info in shangguanyan:
+    info['to'] = 8
+    results.append(info)
 
 wei = []
 shu = []
