@@ -9,4 +9,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     # 显示所有主题
     path('topics/', views.topics, name='topics'),
+    # 特定主体
+    path('topics/<int:topic_id>', views.topic, name='topic')
 ]
