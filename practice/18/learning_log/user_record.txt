@@ -1,0 +1,7 @@
+super user:
+bibibi
+000000
+
+register users:
+bibibi1
+a0000000
